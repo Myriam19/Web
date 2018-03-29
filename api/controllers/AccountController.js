@@ -7,5 +7,9 @@ module.exports = {
             data.lesaddresses = records;
             return res.view('account', data);
         });
+    },
+
+    verrou : function(req,res){
+        return res.view('homepage')
     }
 }
