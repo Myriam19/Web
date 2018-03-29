@@ -33,7 +33,7 @@ function inverseTexte(){
     p1 = allP[0];
     p2 = allP[1];
 
-    tmp = p1.innerText;
-    p1.innerText = p2.innerText;
-    p2.innerText = tmp;
+    tmp = p1.innerHTML;
+    p1.innerHTML = p2.innerHTML;
+    p2.innerHTML = tmp;
 }
