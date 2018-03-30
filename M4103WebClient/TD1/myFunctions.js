@@ -1,4 +1,9 @@
-
+function init(){
+    defTitre4();
+    inverseTexte();
+    datemodif();
+    majHorloge1();
+}
 
 function defTitre1(){
     document.title = document.getElementById("titre").innerText;
@@ -36,4 +41,38 @@ function inverseTexte(){
     tmp = p1.innerHTML;
     p1.innerHTML = p2.innerHTML;
     p2.innerHTML = tmp;
+}
+
+function datemodif(){
+    var author = document.getElementsByName("author")[0].getAttribute("content");
+    var date = new Date(document.lastModified);
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var dateString = date.toLocaleDateString('fr-FR', options);
+    document.getElementById("date_modif").innerText = "Dernière modification : le " + dateString+" par "+ author;
+    //date.toString("MMMM yyyy");
+}
+
+function majHorloge1(){
+    intervalId = window.setInterval(getTime, 1000);
+}
+
+function getTime(){
+    var time = new Date();
+    var timeString = time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+    document.getElementById("horloge").innerText =timeString;
+}
+
+function majHorloge2(){
+    timeoutID = window.setTimeout(getTime, 1000);
+}
+
+function majNbJours(){
+    var dateFinale = Date.parse("19 Jul 2018 00:00:00 GMT")/86400000;
+    var dateAuj = Date.now()/86400000;
+    var dateDiff = (dateFinale-dateAuj).toFixed(0);
+    document.getElementById("19Juillet").innerText = document.getElementById("19Juillet").innerText.replace("xxx",dateDiff);
+
+    if(dateDiff == 1){
+        document.getElementById("19Juillet").innerText = document.getElementById("19Juillet").innerText.replace("jours","jour");
+    }
 }
