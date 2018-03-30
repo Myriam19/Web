@@ -64,6 +64,7 @@ function getTime(){
 
 function majHorloge2(){
     timeoutID = window.setTimeout(getTime, 1000);
+    timeoutID = window.setTimeout(majHorloge2, 1000);
 }
 
 function majNbJours(){
