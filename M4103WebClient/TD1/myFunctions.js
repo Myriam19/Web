@@ -1,8 +1,21 @@
+var bodyyyy;
+
 function init(){
     defTitre4();
     inverseTexte();
     datemodif();
     majHorloge1();
+    majGrafH();
+    derouler(-1);
+    sauvegarde();
+    var nbrecherche = document.getElementsByName("nbRecherche")[0];
+    nbrecherche.setAttribute("value","0");
+    console.log(nbrecherche.value);
+    console.log("test");
+    console.log(bodyyyy);
+}
+function sauvegarde(){
+    bodyyyy = document.querySelector("body");
 }
 
 function defTitre1(){
@@ -71,9 +84,92 @@ function majNbJours(){
     var dateFinale = Date.parse("19 Jul 2018 00:00:00 GMT")/86400000;
     var dateAuj = Date.now()/86400000;
     var dateDiff = (dateFinale-dateAuj).toFixed(0);
+
     document.getElementById("19Juillet").innerText = document.getElementById("19Juillet").innerText.replace("xxx",dateDiff);
 
     if(dateDiff == 1){
         document.getElementById("19Juillet").innerText = document.getElementById("19Juillet").innerText.replace("jours","jour");
     }
+}
+
+function displayTime(){
+    var time = new Date();
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+
+    var hourFirst = Math.trunc(hours/10);
+    var minuteFirst = Math.trunc(minutes/10);
+    var secondFirst = Math.trunc(seconds/10);
+
+    var hourSecond = hours-(hourFirst*10);
+    var minuteSecond = minutes-(minuteFirst*10);
+    var secondSecond = seconds-(secondFirst*10);
+
+    var images = document.querySelectorAll("img");
+
+    images[0].setAttribute("src", "images/"+hourFirst+".gif");
+    images[1].setAttribute("src", "images/"+hourSecond+".gif");
+    images[2].setAttribute("src", "images/"+minuteFirst+".gif");
+    images[3].setAttribute("src", "images/"+minuteSecond+".gif");
+    images[4].setAttribute("src", "images/"+secondFirst+".gif");
+    images[5].setAttribute("src", "images/"+secondSecond+".gif");
+}
+
+function majGrafH(){
+    intervalId = window.setInterval(displayTime, 1000);
+}
+
+function changeColor(){
+    var input = document.querySelector("input");
+    if(input.value != "" && isNaN(input.value)){
+        input.setAttribute("class","rouge");
+    }else if(input.value == ""){
+        input.setAttribute("class","blanc");
+    }else{
+        input.setAttribute("class","vert");
+    }
+}
+
+function derouler(i){
+    var menu = document.getElementById("menu");
+    var lis = menu.children;
+
+    //Initialisation
+    for(var j=0; j<lis.length; j++){
+        var listStyle = lis[j].getAttribute("style");
+        if(listStyle == null){
+            lis[j].setAttribute("style","list-style-image: url('images/plus.gif');");
+        }
+    }
+
+    if(i!=-1){
+        listStyle = lis[i].getAttribute("style");
+        if(listStyle.valueOf() == "list-style-image: url('images/plus.gif');"){
+            lis[i].setAttribute("style","list-style-image: url('images/minus.gif');");
+            ul = lis[i].firstElementChild;
+            ul.setAttribute("style","display: block;");
+        }else{
+            lis[i].setAttribute("style","list-style-image: url('images/plus.gif');");
+            ul = lis[i].firstElementChild;
+            ul.setAttribute("style","display: none;");
+        }
+    }
+}
+function recherche(){
+
+    var mot = document.querySelectorAll("input")[1].value;
+    var nbrecherche = document.getElementsByName("nbRecherche")[0].value;
+
+    if(nbrecherche=='0'){
+        var text = document.querySelector("body").innerText;
+        text.replace(mot, "waw");//"<spam class=\"rech\">"+mot+"</spam>");
+        console.log("ok good");
+        console.log(text);
+        console.log(mot);
+    }
+
+    document.getElementsByName("nbRecherche")[0].setAttribute("value","1");
+    nbrecherche = document.getElementsByName("nbRecherche")[0].value;
+
 }

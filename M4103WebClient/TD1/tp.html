@@ -5,9 +5,10 @@
         <meta name="author" content="Meriam Zekri">
         <meta name="description" content="TD numero 1">
         <meta name="keywords" content="web client">
+        <link rel="stylesheet" href="style.css" />
         <title>TP 1</title>
-        <script type="text/javascript" src="myFunctions.js">
-        </script>
+        <script type="text/javascript">var bodyyyy = document.querySelector("body");</script>
+        <script type="text/javascript" src="myFunctions.js"></script>
     </head>
     <body onload="init()">
         <h1 id="titre" class="firstOrLast">Coucou</h1>
@@ -28,5 +29,52 @@
     <div id="date_modif"></div>
     <p id="19Juillet" onclick="majNbJours()">il reste xxx jours avant le 19 juillet 2018</p>
     <p id="horloge"></p>
+
+    <div id="grafHorloge"> <img></img> <img></img> : <img></img> <img></img> : <img></img> <img></img> </div>
+        <br/>
+
+    <form>
+        <input type="text" class="blanc" oninput="changeColor()"/>
+    </form>
+
+    <aside>
+        <ul id="menu">
+            <li onclick="derouler(0)">Informations Générales
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">CV</a></li>
+                </ul>
+            </li>
+
+            <li onclick="derouler(1)">Recherche
+                <ul>
+                    <li><a href="#">Activités</a></li>
+                    <li><a href="#">Rayonnement Scientifique</a></li>
+                    <li><a href="#">Projets en cours</a></li>
+                    <li><a href="#">Anciens projets</a></li>
+                    <li><a href="#">Publications</a></li>
+                </ul>
+            </li>
+
+            <li onclick="derouler(2)">Enseignement
+                <ul>
+                    <li><a href="#">Département Informatique</a></li>
+                    <li><a href="#">LP SIL</a></li>
+                    <li><a href="#">Polytech Nice-Sophia</a></li>
+                    <li><a href="#">Autres</a></li>
+                    <li><a href="#">Stages et Projets</a></li>
+                </ul>
+            </li>
+
+            <li onclick="derouler(3)">Personnel
+                <ul>
+                    <li><a href="#">Loisirs</a></li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <p><input type="text"/><input type="button" value="Rechercher" onclick="recherche()"/></p>
+    <input name="nbRecherche" type="hidden">
     </body>
 </html>
