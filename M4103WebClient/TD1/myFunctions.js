@@ -8,14 +8,9 @@ function init(){
     majGrafH();
     derouler(-1);
     sauvegarde();
-    var nbrecherche = document.getElementsByName("nbRecherche")[0];
-    nbrecherche.setAttribute("value","0");
-    console.log(nbrecherche.value);
-    console.log("test");
-    console.log(bodyyyy);
 }
 function sauvegarde(){
-    bodyyyy = document.querySelector("body");
+    bodyyyy = document.querySelector("body").innerHTML;
 }
 
 function defTitre1(){
@@ -156,20 +151,17 @@ function derouler(i){
         }
     }
 }
-function recherche(){
+function recherche(string){
 
-    var mot = document.querySelectorAll("input")[1].value;
-    var nbrecherche = document.getElementsByName("nbRecherche")[0].value;
+    document.body.innerHTML = bodyyyy;
 
-    if(nbrecherche=='0'){
-        var text = document.querySelector("body").innerText;
-        text.replace(mot, "waw");//"<spam class=\"rech\">"+mot+"</spam>");
-        console.log("ok good");
-        console.log(text);
-        console.log(mot);
+    var strings = string.split(" ");
+
+    for(i=0; i<strings.length; i++){
+        if(strings[i] != null && strings[i]!="") {
+            regExp = new RegExp('(' + strings[i] + ')', 'gi');
+            document.body.innerHTML = document.body.innerHTML.replace(regExp, "<span class='rech'>" + strings[i] + "</span>");
+        }
     }
-
-    document.getElementsByName("nbRecherche")[0].setAttribute("value","1");
-    nbrecherche = document.getElementsByName("nbRecherche")[0].value;
 
 }

@@ -12,7 +12,7 @@
     </head>
     <body onload="init()">
         <h1 id="titre" class="firstOrLast">Coucou</h1>
-        <h2 >Premier h2</h2>
+        <h2>Premier h2</h2>
         <h2 class="firstOrLast">Deuxieme h2</h2>
         <h3 class="firstOrLast">Premier h3</h3>
         <h3>Deuxieme h3</h3>
@@ -74,7 +74,6 @@
         </ul>
     </aside>
 
-    <p><input type="text"/><input type="button" value="Rechercher" onclick="recherche()"/></p>
-    <input name="nbRecherche" type="hidden">
+    <p><input type="text"/><input type="button" value="Rechercher" onclick="recherche(document.querySelectorAll('input')[1].value)"/></p>
     </body>
 </html>
